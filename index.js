@@ -10,6 +10,10 @@ const jwt = require('jsonwebtoken');
 // Express app
 const app = express();
 app.use(express.static('views'))
+app.use((req, res, next)=>{
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+});
 
 // Express router
 const router = express.Router();
@@ -109,6 +113,7 @@ router.get('/users', (req, res)=> {
     `;
     db.query(strQry, (err, results)=> {
         if(err) throw err;
+        res.setHeader('Access-Control-Allow-Origin','*')
         res.json({
             status: 200,
             users: results
