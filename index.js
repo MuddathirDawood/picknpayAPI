@@ -248,3 +248,7 @@ res.status(200).json({
 app.get('/product', (req, res)=>{
     res.sendFile(__dirname + "/views/products.html")
 })
+
+app.get('/reg', (req, res)=>{
+    res.sendFile(__dirname + "/views/register.html")
+})
